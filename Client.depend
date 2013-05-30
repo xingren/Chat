@@ -1,9 +1,8 @@
 # depslib dependency file v1.0
-1369800459 source:/media/rui/E/workspace/Client/src/Main.cpp
+1369843114 source:/media/rui/E/workspace/Client/src/Main.cpp
 	"Main.h"
-	"MyFrame.h"
 
-1369799873 /media/rui/E/workspace/Client/include/Main.h
+1369842037 /media/rui/E/workspace/Client/include/Main.h
 	<wx/wx.h>
 
 1341838983 /media/rui/D/Tools/wxWidgets-2.9.4/include/wx/wx.h
@@ -2902,4 +2901,10 @@
 
 1369800623 source:/media/rui/E/workspace/Client/src/MyFrame.cpp
 	"MyFrame.h"
+
+1369844521 source:e:\workspace\client\src\main.cpp
+	"Main.h"
+
+1369844058 e:\workspace\client\include\main.h
+	<wx/wx.h>
 

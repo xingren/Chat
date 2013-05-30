@@ -38,9 +38,7 @@
 			<Add option="`wx-config --libs`" />
 		</Linker>
 		<Unit filename="include/Main.h" />
-		<Unit filename="include/MyFrame.h" />
 		<Unit filename="src/Main.cpp" />
-		<Unit filename="src/MyFrame.cpp" />
 		<Extensions>
 			<code_completion>
 				<search_path add="include" />

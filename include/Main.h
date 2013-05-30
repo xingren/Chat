@@ -17,13 +17,16 @@ class MainFrame:public wxFrame
         MainFrame(const wxString& title, const wxPoint& pos, const wxSize& size);
         void OnQuit(wxCommandEvent& event);
         void OnAbout(wxCommandEvent& event);
+        void OnPaint(wxPaintEvent& event);
+        DECLARE_EVENT_TABLE()
     protected:
 };
 
 enum
 {
     ID_Quit=1,
-    ID_About
+    ID_About,
+    ID_LISTBOX
 };
 
 
