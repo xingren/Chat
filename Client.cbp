@@ -50,8 +50,10 @@
 		<Linker>
 			<Add option="`wx-config --libs`" />
 		</Linker>
+		<Unit filename="include/ChatPerson.h" />
 		<Unit filename="include/ChatTabData.h" />
 		<Unit filename="include/Main.h" />
+		<Unit filename="src/ChatPerson.cpp" />
 		<Unit filename="src/ChatTabData.cpp" />
 		<Unit filename="src/Main.cpp" />
 		<Extensions>

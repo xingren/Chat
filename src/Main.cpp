@@ -47,19 +47,19 @@ MainFrame::MainFrame(const wxString& title, const wxPoint& pos, const wxSize& si
     mainSizer = new wxBoxSizer(wxHORIZONTAL);
     m_item_list = new wxListCtrl(mainPanel, ID_LISTCTRL, wxPoint(0,0), wxSize(100,window_size.GetHeight()), wxLC_LIST|wxLC_SINGLE_SEL);
 
-    m_item_list->InsertItem(0,_("first"));
-    m_item_list->InsertItem(1,_("second"));
-
-
-
-    chatTab.push_back(ChatTabData());
-    chatTab.push_back(ChatTabData());
-
     mainSizer->Add(m_item_list,0, wxEXPAND | wxALL, 10);
     mainSizer->Add(noteBook,0,wxEXPAND | wxALL, 10);
 
-
     mainPanel->SetSizer(mainSizer);
+
+    ChatListItem item1(noteBook);
+    item1.chatData.email = "first";
+    item1.chatData.chatText = "fisrt say haha";
+    AddChatPerson(0,item1);
+    ChatListItem item2(noteBook);
+    item2.chatData.email = "second";
+    item2.chatData.chatText = "second say oh no";
+    AddChatPerson(1,item2);
     //wxListCtrl* listctrl = new wxListCtrl(this,ID_LISTBOX,wxDefaultPosition,wxSize(80,80),strings,wxLB_SINGLE);
 }
 
@@ -91,30 +91,34 @@ void MainFrame::OnPaint(wxPaintEvent& event)
 
 void MainFrame::OnItemSelect(wxListEvent& event)
 {
-    ChatTabData tab = chatTab.at(event.GetIndex());
 
-    if(!tab.sel)
+    ChatListItem* ptr =(ChatListItem*) m_item_list->GetItemData(event.GetIndex());
+
+    if(ptr == NULL)
     {
-        tab.sel = true;
-        wxListItem item = event.GetItem();
-        wxString str = item.GetText();
-        wxPanel* panel = new wxPanel(noteBook,wxID_ANY);
-        wxBoxSizer* topSizer = new wxBoxSizer(wxVERTICAL);
-        wxBoxSizer* buttonSizer = new wxBoxSizer(wxHORIZONTAL);
-        wxTextCtrl* textctrl = new wxTextCtrl(panel,tab.ID_CHAT_TEXT_CTRL,wxEmptyString,wxDefaultPosition,
-        wxSize(window_size.GetWidth(),window_size.GetHeight()*0.55),wxTE_MULTILINE | wxTE_RICH | wxTE_READONLY |wxTE_AUTO_URL);
-        wxTextCtrl* sendTextctrl = new wxTextCtrl(panel,tab.ID_CHAT_TEXT_CTRL,wxEmptyString,wxDefaultPosition,
-        wxSize(window_size.GetWidth(),window_size.GetHeight()*0.1),wxTE_MULTILINE | wxTE_RICH | wxTE_AUTO_URL);
-        topSizer->Add(textctrl,0,wxEXPAND | wxALL,10);
-        topSizer->Add(sendTextctrl,0,wxEXPAND | wxALL,10);
-        buttonSizer->AddSpacer(noteBook->GetClientSize().GetWidth()*0.5);
-        buttonSizer->Add(new wxButton(panel,wxID_CANCEL,_("关闭")),0,wxEXPAND | wxALL,10);
-        buttonSizer->Add(new wxButton(panel,tab.ID_SEND_CTRL,_("发送")),0,wxEXPAND | wxALL,10);
-        wxGetApp()->mainFrame->Conne
-        //topSizer.Add(uttonSizer,0,wxALIGN_CENTER,0);
-        topSizer->Add(buttonSizer);
-        panel->SetSizer(topSizer);
-        noteBook->AddPage(panel,str,false);
+        m_item_list->DeleteItem(event.GetIndex());
+        return;
+    }
+
+    if(!ptr->sel)
+    {
+        ptr->sel = true;
+        ptr->CreateTabUI(noteBook->GetPageCount());
+        wxString str = event.GetItem().GetText();
+        noteBook->AddPage(ptr->panel,str,false);
         noteBook->ChangeSelection(noteBook->GetPageCount()-1);
     }
+
+}
+
+void MainFrame::AddChatPerson(int index,ChatListItem& tab) //tab
+{
+    wxListItem item;
+    ChatListItem* ptr = new ChatListItem(noteBook);
+    *ptr = tab;//item的data部分必须保证在DeleteItem之前不会被销毁
+    item.SetData(ptr);
+    item.SetText(tab.chatData.email);
+    item.SetId(index);
+    m_item_list->InsertItem(item);
+    //m_item_list->InsertItem(index,"abcdef");
 }

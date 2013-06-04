@@ -5,8 +5,8 @@
 #include <wx/listctrl.h>
 #include <wx/notebook.h>
 #include <wx/vector.h>
-#include <wx/map.h>
-#include "../include/ChatTabData.h"
+#include "../include/ChatListItem.h"
+#include <wx/list.h>
 class Main:public wxApp
 {
     public:
@@ -22,6 +22,8 @@ class MainFrame:public wxFrame
        wxSize window_size;
     public:
         MainFrame(const wxString& title, const wxPoint& pos, const wxSize& size);
+        void AddChatPerson(int,ChatListItem&);
+    public://事件处理回调函数
         void OnQuit(wxCommandEvent& event);
         void OnAbout(wxCommandEvent& event);
         void OnPaint(wxPaintEvent& event);
@@ -33,8 +35,9 @@ class MainFrame:public wxFrame
         wxBoxSizer* mainSizer;
         wxPanel* mainPanel;
         bool beOpen[1000];
-        wxVector<ChatTabData> chatTab;
-        wxMap<long,int> tabs;
+//        wxVector<ChatListItem> chatTab;
+ //       wxList<ChatListItem> online;
+  //      wxList<ChatListItem> offline;
 };
 
 enum
