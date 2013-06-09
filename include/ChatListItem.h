@@ -16,7 +16,7 @@ class ChatListItem:public wxEvtHandler
         bool online;//是否在线
         int index;//在noteBook的第几个tab
         wxNotebook* parent;
-        wxPanel* panel;
+		wxPanel* panel;
         wxBoxSizer* topSizer;
         wxBoxSizer* buttonSizer;
         wxTextCtrl* textctrl;

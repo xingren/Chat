@@ -1,6 +1,5 @@
 #include "../include/Main.h"
 
-
 bool Main::OnInit()
 {
     mainFrame = new MainFrame(_("chat"),wxPoint(50,50),wxSize(700,700));
@@ -92,22 +91,35 @@ void MainFrame::OnPaint(wxPaintEvent& event)
 void MainFrame::OnItemSelect(wxListEvent& event)
 {
 
-    ChatListItem* ptr =(ChatListItem*) m_item_list->GetItemData(event.GetIndex());
+    //ChatListItem* ptr =(ChatListItem*) m_item_list->GetItemData(event.GetIndex());
+	wxListItem item = event.GetItem();
+	if(m_item_list->GetItem(item))
+	{
 
+	}
+	else
+	{
+
+	}
+	ChatListItem* ptr = (ChatListItem*)item.GetData();
     if(ptr == NULL)
     {
         m_item_list->DeleteItem(event.GetIndex());
         return;
     }
 
-    if(!ptr->sel)
+    if(!ptr->sel)//没有打开tab
     {
         ptr->sel = true;
         ptr->CreateTabUI(noteBook->GetPageCount());
         wxString str = event.GetItem().GetText();
-        noteBook->AddPage(ptr->panel,str,false);
+		noteBook->AddPage(ptr->panel,str,false);
         noteBook->ChangeSelection(noteBook->GetPageCount()-1);
     }
+	else//已经打开了tab
+	{
+		noteBook->SetSelection(ptr->index);
+	}
 
 }
 
@@ -116,9 +128,14 @@ void MainFrame::AddChatPerson(int index,ChatListItem& tab) //tab
     wxListItem item;
     ChatListItem* ptr = new ChatListItem(noteBook);
     *ptr = tab;//item的data部分必须保证在DeleteItem之前不会被销毁
-    item.SetData(ptr);
+
+	//int a = 0;
+
+	item.SetData(ptr);
     item.SetText(tab.chatData.email);
     item.SetId(index);
+	item.SetMask(wxLIST_MASK_DATA | wxLIST_MASK_TEXT | wxLIST_MASK_IMAGE | wxLIST_MASK_STATE);
     m_item_list->InsertItem(item);
     //m_item_list->InsertItem(index,"abcdef");
+	//m_item_list->SetItem(item);
 }
