@@ -54,11 +54,11 @@ MainFrame::MainFrame(const wxString& title, const wxPoint& pos, const wxSize& si
 
     ChatListItem item1(noteBook);
     item1.chatData.email = "first";
-    item1.chatData.chatText = "fisrt say haha";
+    item1.chatData.chatText = "fisrt say haha\n";
     AddChatPerson(0,item1);
     ChatListItem item2(noteBook);
     item2.chatData.email = "second";
-    item2.chatData.chatText = "second say oh no";
+    item2.chatData.chatText = "second say oh no\n";
     AddChatPerson(1,item2);
     //wxListCtrl* listctrl = new wxListCtrl(this,ID_LISTBOX,wxDefaultPosition,wxSize(80,80),strings,wxLB_SINGLE);
 }
@@ -110,7 +110,10 @@ void MainFrame::OnItemSelect(wxListEvent& event)
         m_item_list->DeleteItem(event.GetIndex());
         return;
     }
-
+    int index = noteBook->GetSelection();
+    wxString str = "current select page: ";
+    str << index;
+    SetStatusText(str);
     if(!ptr->sel)//没有打开tab
     {
         ptr->sel = true;
@@ -118,9 +121,9 @@ void MainFrame::OnItemSelect(wxListEvent& event)
         ptr->ui.CreateTabUI(ptr->chatData.chatText,this);
         int pageCount = noteBook->GetPageCount();
         ptr->tabCount = pageCount;
-        tab_item_map.insert(std::pair<int,int>(pageCount,item.GetId()));
+		tab_item_map.insert(std::pair<wxPanel*,int>(ptr->ui.panel,item.GetId()));
 
-        wxString str;
+        wxString str = "page count";
         str << pageCount;
         SetStatusText(str);
         str = event.GetItem().GetText();
@@ -154,26 +157,28 @@ void MainFrame::AddChatPerson(int index,ChatListItem& tab) //tab
 }
 
 
-void MainFrame::OnSendBtnClk(wxCommandEvent& event)//发送按钮响应
+void MainFrame::OnSendBtnClk(wxCommandEvent& event)
 {
-    wxMessageBox("send button");
+	
+   // wxMessageBox("send button");
 
-    int index = noteBook->GetSelection();
-    if(index == wxNOT_FOUND)
+    wxPanel* panel = (wxPanel*)noteBook->GetCurrentPage();
+    if(panel == NULL)
         return;
-    std::map<int,int>::iterator iter = tab_item_map.find(index);
+    std::map<wxPanel*,int>::iterator iter = tab_item_map.find(panel);
     if(iter != tab_item_map.end())
     {
         wxListItem item;
         item.SetId(iter->second);
-        m_item_list->GetItem(item);
+		item.SetMask(wxLIST_MASK_DATA);
+		m_item_list->GetItem(item);
 
         ChatListItem* ptr = (ChatListItem*)item.GetData();
 
         wxString text = ptr->ui.GetSendText();
 
         ptr->AppendChatText("me: " + text + "\n");
-
+		ptr->ui.AppendChatText("me :" + text +"\n");
         //将消息发送给对方
 
     }
@@ -183,23 +188,30 @@ void MainFrame::OnSendBtnClk(wxCommandEvent& event)//发送按钮响应
 void MainFrame::OnCloseBtnClk(wxCommandEvent& event)
 {
  //   wxMessageBox("delete button");
-     int index = noteBook->GetSelection();
-    if(index == wxNOT_FOUND)
+	wxPanel* panel = (wxPanel*)noteBook->GetCurrentPage();
+    if(panel == NULL)
         return;
-    std::map<int,int>::iterator iter = tab_item_map.find(index);
+    std::map<wxPanel*,int>::iterator iter = tab_item_map.find(panel);
     if(iter != tab_item_map.end())
     {
+		int index = noteBook->GetSelection();
         noteBook->DeletePage(index);
         wxListItem item;
-        item.SetId(iter->second);
-        m_item_list->GetItem(item);
+        
+		item.m_itemId = iter->second;
+		item.m_mask = wxLIST_MASK_DATA;
+		
+		if(m_item_list->GetItem(item))
+		{}
+		else
+		{
+			wxMessageBox("error get item in Close");
+		}
 
         ChatListItem* ptr = (ChatListItem*)item.GetData();
 
         ptr->sel = false;
         tab_item_map.erase(iter);
-
-
     }
 
 }

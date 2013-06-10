@@ -13,11 +13,13 @@
   <ItemGroup>
     <ClInclude Include="include\ChatListItem.h" />
     <ClInclude Include="include\ChatPerson.h" />
+    <ClInclude Include="include\ChatTabUI.h" />
     <ClInclude Include="include\Main.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\ChatListItem.cpp" />
     <ClCompile Include="src\ChatPerson.cpp" />
+    <ClCompile Include="src\ChatTabUI.cpp" />
     <ClCompile Include="src\Main.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
@@ -30,7 +32,7 @@
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v110</PlatformToolset>
-    <CharacterSet>UTF-8</CharacterSet>
+    <CharacterSet>UTF8</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>

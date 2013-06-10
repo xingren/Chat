@@ -46,7 +46,7 @@ protected:
     wxPanel* mainPanel;
     //WX_DECLARE_HASH_MAP(int,int,wxIntegerEqual,MyHashMap);
     //MyHashMap tab_item_map;
-    std::map<int,int> tab_item_map;
+    std::map<wxPanel*,int> tab_item_map;
     static MainFrame* mainFram;
 //        wxVector<ChatListItem> chatTab;
 //       wxList<ChatListItem> online;

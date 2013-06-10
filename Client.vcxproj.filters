@@ -24,6 +24,9 @@
     <ClInclude Include="include\Main.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="include\ChatTabUI.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\ChatListItem.cpp">
@@ -33,6 +36,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="src\Main.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ChatTabUI.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
