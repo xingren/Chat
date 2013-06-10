@@ -5,39 +5,52 @@
 #include <wx/listctrl.h>
 #include <wx/notebook.h>
 #include <wx/vector.h>
-#include "../include/ChatListItem.h"
 #include <wx/list.h>
+#include <wx/hashmap.h>
+#include <map>
+
+
+#include "../include/ChatListItem.h"
+
+class ChatListItem;
+
 class Main:public wxApp
 {
-    public:
-        virtual bool OnInit();
-        wxFrame* mainFrame;
-    protected:
-    private:
+public:
+    virtual bool OnInit();
+    wxFrame* mainFrame;
+protected:
+private:
 };
 
 class MainFrame:public wxFrame
 {
-    public:
-       wxSize window_size;
-    public:
-        MainFrame(const wxString& title, const wxPoint& pos, const wxSize& size);
-        void AddChatPerson(int,ChatListItem&);
-    public://事件处理回调函数
-        void OnQuit(wxCommandEvent& event);
-        void OnAbout(wxCommandEvent& event);
-        void OnPaint(wxPaintEvent& event);
-        void OnItemSelect(wxListEvent& event);
-        DECLARE_EVENT_TABLE()
-    protected:
-        wxListCtrl* m_item_list;
-        wxNotebook* noteBook;
-        wxBoxSizer* mainSizer;
-        wxPanel* mainPanel;
-        bool beOpen[1000];
+public:
+    wxSize window_size;
+public:
+    MainFrame(const wxString& title, const wxPoint& pos, const wxSize& size);
+    void AddChatPerson(int,ChatListItem&);
+
+public://事件处理回调函数
+    void OnQuit(wxCommandEvent& event);
+    void OnAbout(wxCommandEvent& event);
+    void OnPaint(wxPaintEvent& event);
+    void OnItemSelect(wxListEvent& event);
+    void OnSendBtnClk(wxCommandEvent& event);
+    void OnCloseBtnClk(wxCommandEvent& event);
+    DECLARE_EVENT_TABLE()
+protected:
+    wxListCtrl* m_item_list;
+    wxNotebook* noteBook;
+    wxBoxSizer* mainSizer;
+    wxPanel* mainPanel;
+    //WX_DECLARE_HASH_MAP(int,int,wxIntegerEqual,MyHashMap);
+    //MyHashMap tab_item_map;
+    std::map<int,int> tab_item_map;
+    static MainFrame* mainFram;
 //        wxVector<ChatListItem> chatTab;
- //       wxList<ChatListItem> online;
-  //      wxList<ChatListItem> offline;
+//       wxList<ChatListItem> online;
+    //      wxList<ChatListItem> offline;
 };
 
 enum

@@ -4,23 +4,16 @@
 !_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
-ChatListItem	include/ChatListItem.h	/^class ChatListItem:public wxEvtHandler$/;"	c
+ChatListItem	include/ChatListItem.h	/^class ChatListItem$/;"	c
 ChatListItem_H	include/ChatListItem.h	2;"	d
 ID	include/ChatListItem.h	/^    static long ID;$/;"	m	class:ChatListItem
-buttonSizer	include/ChatListItem.h	/^        wxBoxSizer* buttonSizer;$/;"	m	class:ChatListItem
-chatData	include/ChatListItem.h	/^        ChatPerson chatData;$/;"	m	class:ChatListItem
-chatText	include/ChatListItem.h	/^        wxString chatText;$/;"	m	class:ChatListItem
-closeBtn	include/ChatListItem.h	/^        wxButton* closeBtn;$/;"	m	class:ChatListItem
-id	include/ChatListItem.h	/^        int id;$/;"	m	class:ChatListItem
-index	include/ChatListItem.h	/^        int index;\/\/在noteBook的第几个tab$/;"	m	class:ChatListItem
-online	include/ChatListItem.h	/^        bool online;\/\/是否在线$/;"	m	class:ChatListItem
-panel	include/ChatListItem.h	/^        wxPanel* panel;$/;"	m	class:ChatListItem
-parent	include/ChatListItem.h	/^        wxNotebook* parent;$/;"	m	class:ChatListItem
-sel	include/ChatListItem.h	/^        bool sel;\/\/是否已经打开tab$/;"	m	class:ChatListItem
-sendBtn	include/ChatListItem.h	/^        wxButton* sendBtn;$/;"	m	class:ChatListItem
-sendTextctrl	include/ChatListItem.h	/^        wxTextCtrl* sendTextctrl;$/;"	m	class:ChatListItem
-textctrl	include/ChatListItem.h	/^        wxTextCtrl* textctrl;$/;"	m	class:ChatListItem
-topSizer	include/ChatListItem.h	/^        wxBoxSizer* topSizer;$/;"	m	class:ChatListItem
+chatData	include/ChatListItem.h	/^    ChatPerson chatData;$/;"	m	class:ChatListItem
+chatText	include/ChatListItem.h	/^    wxString chatText;$/;"	m	class:ChatListItem
+id	include/ChatListItem.h	/^    int id;$/;"	m	class:ChatListItem
+index	include/ChatListItem.h	/^    int index;\/\/在noteBook的第几个tab$/;"	m	class:ChatListItem
+online	include/ChatListItem.h	/^    bool online;\/\/是否在线$/;"	m	class:ChatListItem
+sel	include/ChatListItem.h	/^    bool sel;\/\/是否已经打开tab$/;"	m	class:ChatListItem
+ui	include/ChatListItem.h	/^    ChatTabUI ui;$/;"	m	class:ChatListItem
 CHATPERSON_H	include/ChatPerson.h	2;"	d
 ChatPerson	include/ChatPerson.h	/^class ChatPerson$/;"	c
 chatText	include/ChatPerson.h	/^        wxString chatText;$/;"	m	class:ChatPerson
@@ -40,11 +33,20 @@ mainPanel	include/Main.h	/^        wxPanel* mainPanel;$/;"	m	class:MainFrame
 mainSizer	include/Main.h	/^        wxBoxSizer* mainSizer;$/;"	m	class:MainFrame
 noteBook	include/Main.h	/^        wxNotebook* noteBook;$/;"	m	class:MainFrame
 window_size	include/Main.h	/^       wxSize window_size;$/;"	m	class:MainFrame
-ChatListItem	src/ChatListItem.cpp	/^ChatListItem::ChatListItem(wxNotebook* parent)$/;"	f	class:ChatListItem
-CreateTabUI	src/ChatListItem.cpp	/^void ChatListItem::CreateTabUI(int index)$/;"	f	class:ChatListItem
+ChatTabUI	include/TabUI.h	/^class ChatTabUI:public wxPanel$/;"	c
+ChatTabUI_H	include/TabUI.h	2;"	d
+buttonSizer	include/TabUI.h	/^    wxBoxSizer* buttonSizer;$/;"	m	class:ChatTabUI
+closeBtn	include/TabUI.h	/^    wxButton* closeBtn;$/;"	m	class:ChatTabUI
+item	include/TabUI.h	/^	ChatListItem* item;$/;"	m	class:ChatTabUI
+panel	include/TabUI.h	/^	wxPanel* panel;$/;"	m	class:ChatTabUI
+parent	include/TabUI.h	/^	wxNotebook* parent;$/;"	m	class:ChatTabUI
+sendBtn	include/TabUI.h	/^    wxButton* sendBtn;$/;"	m	class:ChatTabUI
+sendTextctrl	include/TabUI.h	/^    wxTextCtrl* sendTextctrl;$/;"	m	class:ChatTabUI
+textctrl	include/TabUI.h	/^    wxTextCtrl* textctrl;$/;"	m	class:ChatTabUI
+topSizer	include/TabUI.h	/^    wxBoxSizer* topSizer;$/;"	m	class:ChatTabUI
+AppendChatText	src/ChatListItem.cpp	/^void ChatListItem::AppendChatText(wxString text)$/;"	f	class:ChatListItem
+ChatListItem	src/ChatListItem.cpp	/^ChatListItem::ChatListItem(wxNotebook* parent):ui(parent,this)$/;"	f	class:ChatListItem
 ID	src/ChatListItem.cpp	/^long ChatListItem::ID = 8888;$/;"	m	class:ChatListItem	file:
-OnCloseBtnClk	src/ChatListItem.cpp	/^void ChatListItem::OnCloseBtnClk(wxCommandEvent& event)$/;"	f	class:ChatListItem
-OnSendBtnClk	src/ChatListItem.cpp	/^void ChatListItem::OnSendBtnClk(wxCommandEvent& event)$/;"	f	class:ChatListItem
 operator =	src/ChatListItem.cpp	/^ChatListItem& ChatListItem::operator=(const ChatListItem& a)$/;"	f	class:ChatListItem
 ~ChatListItem	src/ChatListItem.cpp	/^ChatListItem::~ChatListItem()$/;"	f	class:ChatListItem
 ChatPerson	src/ChatPerson.cpp	/^ChatPerson::ChatPerson()$/;"	f	class:ChatPerson
@@ -56,3 +58,7 @@ OnItemSelect	src/Main.cpp	/^void MainFrame::OnItemSelect(wxListEvent& event)$/;"
 OnPaint	src/Main.cpp	/^void MainFrame::OnPaint(wxPaintEvent& event)$/;"	f	class:MainFrame
 WXUNUSED	src/Main.cpp	/^void MainFrame::OnAbout(wxCommandEvent& WXUNUSED(event))$/;"	f	class:MainFrame
 WXUNUSED	src/Main.cpp	/^void MainFrame::OnQuit(wxCommandEvent& WXUNUSED(event))$/;"	f	class:MainFrame
+CreateTabUI	src/TabUI.cpp	/^void TabUI::CreateTabUI(int index)$/;"	f	class:TabUI
+OnCloseBtnClk	src/TabUI.cpp	/^void ChatListItem::OnCloseBtnClk(wxCommandEvent& event)$/;"	f	class:ChatListItem
+OnSendBtnClk	src/TabUI.cpp	/^void ChatListItem::OnSendBtnClk(wxCommandEvent& event)$/;"	f	class:ChatListItem
+TabUI	src/TabUI.cpp	/^TabUI::TabUI(wxNotebook* parentUI,ChatListItem* item):wxPanel(parent)$/;"	f	class:TabUI

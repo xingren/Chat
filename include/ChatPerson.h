@@ -5,13 +5,13 @@
 
 class ChatPerson
 {
-    public:
-        ChatPerson();
-        virtual ~ChatPerson();
-    public:
-        wxString email;
-        wxString chatText;
-    private:
+public:
+    ChatPerson();
+    virtual ~ChatPerson();
+public:
+    wxString email;
+    wxString chatText;
+private:
 };
 
 #endif // CHATPERSON_H

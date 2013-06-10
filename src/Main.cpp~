@@ -8,6 +8,8 @@ bool Main::OnInit()
 //   frame->Connect( ID_Quit, wxEVT_COMMAND_MENU_SELECTED,(wxObjectEventFunction) &MainFrame::OnQuit );
     //  frame->Connect( ID_About, wxEVT_COMMAND_MENU_SELECTED,(wxObjectEventFunction) &MainFrame::OnAbout );
 
+    pMainFram = mainFrame;
+
     mainFrame->Show(true);
     SetTopWindow(mainFrame);
     return true;
@@ -25,7 +27,7 @@ END_EVENT_TABLE()
 MainFrame::MainFrame(const wxString& title, const wxPoint& pos, const wxSize& size)
     :wxFrame(NULL,-1,title,pos,size,wxDEFAULT_FRAME_STYLE | wxFULL_REPAINT_ON_RESIZE),window_size(size)
 {
-
+    memset(beOpen,0,sizeof(beOpen));
     wxMenuBar *menuBar = new wxMenuBar;
 
     wxMenu *menuFile = new wxMenu;
@@ -106,7 +108,6 @@ void MainFrame::OnItemSelect(wxListEvent& event)
     ChatListItem* ptr = (ChatListItem*)item.GetData();
     if(ptr == NULL)
     {
-       // wxMessageBox("ptr == NULL");
         m_item_list->DeleteItem(event.GetIndex());
         return;
     }
@@ -115,23 +116,13 @@ void MainFrame::OnItemSelect(wxListEvent& event)
     {
         ptr->sel = true;
 
-        ptr->ui.CreateTabUI(ptr->chatData.chatText,this);
-        int pageCount = noteBook->GetPageCount();
-        ptr->tabCount = pageCount;
-        tab_item_map.insert(std::pair<int,int>(pageCount,item.GetId()));
-
-        wxString str;
-        str << pageCount;
-        SetStatusText(str);
-        str = event.GetItem().GetText();
-        noteBook->AddPage(ptr->ui.panel,str,false);
-
-        noteBook->ChangeSelection(pageCount);
-
+        wxString str = event.GetItem().GetText();
+        noteBook->AddPage(&(ptr->ui),str,false);
+        noteBook->ChangeSelection(noteBook->GetPageCount()-1);
     }
     else//已经打开了tab
     {
-        noteBook->SetSelection(ptr->tabCount);
+        noteBook->SetSelection(ptr->index);
     }
 
 }
@@ -152,54 +143,50 @@ void MainFrame::AddChatPerson(int index,ChatListItem& tab) //tab
     //m_item_list->InsertItem(index,"abcdef");
     //m_item_list->SetItem(item);
 }
+void Main::CreateTabUI(int index)
+{
+    sel = true;
+    wxPanel panel = new wxPanel(noteBook);
+    closeBtn = new wxButton(panel,wxID_CANCEL,_("关闭"));
+    sendBtn = new wxButton(panel,wxID_OK,_("发送"));
+    topSizer = new wxBoxSizer(wxVERTICAL);
+    buttonSizer = new wxBoxSizer(wxHORIZONTAL);
+    textctrl = new wxTextCtrl(panel,wxID_ANY,wxEmptyString,wxDefaultPosition,
+                              wxSize(parent->GetClientSize().GetWidth(),parent->GetClientSize().GetHeight()*0.55),wxTE_MULTILINE | wxTE_RICH | wxTE_READONLY |wxTE_AUTO_URL);
+    textctrl->AppendText(chatData.chatText);
 
 
-void MainFrame::OnSendBtnClk(wxCommandEvent& event)//发送按钮响应
+
+    sendTextctrl = new wxTextCtrl(panel,wxID_ANY,wxEmptyString,wxDefaultPosition,
+                                  wxSize(parent->GetClientSize().GetWidth(),parent->GetClientSize().GetHeight()*0.1),wxTE_MULTILINE | wxTE_RICH | wxTE_AUTO_URL);
+    topSizer->Add(textctrl,0,wxEXPAND | wxALL,10);
+    topSizer->Add(sendTextctrl,0,wxEXPAND | wxALL,10);
+    buttonSizer->AddSpacer(parent->GetClientSize().GetWidth()*0.5);
+    buttonSizer->Add(closeBtn,0,wxEXPAND | wxALL,10);
+    buttonSizer->Add(sendBtn,0,wxEXPAND | wxALL,10);
+    //topSizer.Add(uttonSizer,0,wxALIGN_CENTER,0);
+
+    panel->Connect(wxID_CANCEL,wxEVT_COMMAND_BUTTON_CLICKED,&ChatTabUI::OnCloseBtnClk);
+    panel->Connect(wxID_OK,wxEVT_COMMAND_BUTTON_CLICKED,&ChatTabUI::OnSendBtnClk);
+    topSizer->Add(buttonSizer);
+    panel->SetSizer(topSizer);
+}
+
+void MainFram::OnSendBtnClk(wxCommandEvent& event)
 {
     wxMessageBox("send button");
 
-    int index = noteBook->GetSelection();
-    if(index == wxNOT_FOUND)
-        return;
-    std::map<int,int>::iterator iter = tab_item_map.find(index);
-    if(iter != tab_item_map.end())
-    {
-        wxListItem item;
-        item.SetId(iter->second);
-        m_item_list->GetItem(item);
 
-        ChatListItem* ptr = (ChatListItem*)item.GetData();
 
-        wxString text = ptr->ui.GetSendText();
-
-        ptr->AppendChatText("me: " + text + "\n");
-
-        //将消息发送给对方
-
-    }
-
+    item->AppendChatText(sendTextctrl->GetValue());
+    textctrl->AppendText("me:\n" + sendTextctrl->GetValue() + "\n");
 }
 
-void MainFrame::OnCloseBtnClk(wxCommandEvent& event)
+void MainFram::OnCloseBtnClk(wxCommandEvent& event)
 {
- //   wxMessageBox("delete button");
-     int index = noteBook->GetSelection();
-    if(index == wxNOT_FOUND)
-        return;
-    std::map<int,int>::iterator iter = tab_item_map.find(index);
-    if(iter != tab_item_map.end())
-    {
-        noteBook->DeletePage(index);
-        wxListItem item;
-        item.SetId(iter->second);
-        m_item_list->GetItem(item);
-
-        ChatListItem* ptr = (ChatListItem*)item.GetData();
-
-        ptr->sel = false;
-        tab_item_map.erase(iter);
-
-
-    }
-
+    wxMessageBox("delete button");
+    assert(parent != NULL);
+    parentUI->DeletePage(index);
+    //parent->RemovePage(index);
+    item->sel = false;
 }

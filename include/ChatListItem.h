@@ -6,38 +6,30 @@
 #include <wx/listctrl.h>
 #include <wx/notebook.h>
 
+
 #include "../include/ChatPerson.h"
-class ChatListItem:public wxEvtHandler
+#include "../include/ChatTabUI.h"
+
+
+
+class ChatListItem
 {
-    public:
+public:
     static long ID;
-        int id;
-        bool sel;//是否已经打开tab
-        bool online;//是否在线
-        int index;//在noteBook的第几个tab
-        wxNotebook* parent;
-		wxPanel* panel;
-        wxBoxSizer* topSizer;
-        wxBoxSizer* buttonSizer;
-        wxTextCtrl* textctrl;
-        wxTextCtrl* sendTextctrl;
-        wxButton* closeBtn;
-        wxButton* sendBtn;
-        ChatPerson chatData;
-    public:
-        ChatListItem(wxNotebook *parent);
-        void CreateTabUI(int index);
-        virtual ~ChatListItem();
-        wxString chatText;
-    public:
-        void OnSendBtnClk(wxCommandEvent& event);
-        void OnCloseBtnClk(wxCommandEvent& event);
-        ChatListItem& operator=(const ChatListItem&);
-    protected:
+    int id;
+    int SEND_BTN_ID;
+    bool sel;//是否已经打开tab
+    bool online;//是否在线
+    int tabCount;//在noteBook的第几个tab
 
-    private:
-        DECLARE_EVENT_TABLE();
 
+    ChatTabUI ui; //tabUI
+    ChatPerson chatData;//聊天信息
+public:
+    ChatListItem(wxNotebook *parent);
+    virtual ~ChatListItem();
+    void AppendChatText(wxString text);
+    void CopyWithoutUI(ChatListItem& item);
 
 };
 
