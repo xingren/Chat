@@ -28,7 +28,7 @@ public:
 public:
     ChatListItem(wxNotebook *parent);
     virtual ~ChatListItem();
-    void AppendChatText(wxString text);
+    void AppendChatText(wxString& text);
     void CopyWithoutUI(ChatListItem& item);
 
 };

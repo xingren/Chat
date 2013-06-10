@@ -159,7 +159,7 @@ void MainFrame::AddChatPerson(int index,ChatListItem& tab) //tab
 
 void MainFrame::OnSendBtnClk(wxCommandEvent& event)
 {
-	
+
    // wxMessageBox("send button");
 
     wxPanel* panel = (wxPanel*)noteBook->GetCurrentPage();
@@ -176,9 +176,9 @@ void MainFrame::OnSendBtnClk(wxCommandEvent& event)
         ChatListItem* ptr = (ChatListItem*)item.GetData();
 
         wxString text = ptr->ui.GetSendText();
-
-        ptr->AppendChatText("me: " + text + "\n");
-		ptr->ui.AppendChatText("me :" + text +"\n");
+        text = "me: " + text + "\n";
+        ptr->AppendChatText(text);
+		ptr->ui.AppendChatText(text);
         //将消息发送给对方
 
     }
@@ -197,15 +197,16 @@ void MainFrame::OnCloseBtnClk(wxCommandEvent& event)
 		int index = noteBook->GetSelection();
         noteBook->DeletePage(index);
         wxListItem item;
-        
+
 		item.m_itemId = iter->second;
 		item.m_mask = wxLIST_MASK_DATA;
-		
+
 		if(m_item_list->GetItem(item))
 		{}
 		else
 		{
 			wxMessageBox("error get item in Close");
+			return ;
 		}
 
         ChatListItem* ptr = (ChatListItem*)item.GetData();
