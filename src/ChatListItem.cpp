@@ -15,6 +15,7 @@ ChatListItem::~ChatListItem()
 }
 
 
+
 void ChatListItem::AppendChatText(wxString& text)
 {
     chatData.chatText.Append(text);

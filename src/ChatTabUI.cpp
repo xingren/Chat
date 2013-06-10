@@ -22,6 +22,7 @@ void ChatTabUI::CreateTabUI(wxString& chatText,wxObject* mainFrame)
                                   wxSize(parentUI->GetClientSize().GetWidth(),parentUI->GetClientSize().GetHeight()*0.1),wxTE_MULTILINE | wxTE_RICH | wxTE_AUTO_URL);
     topSizer->Add(textctrl,0,wxEXPAND | wxALL,10);
     topSizer->Add(sendTextctrl,0,wxEXPAND | wxALL,10);
+   // wxGridSizer toolsSizer = new wxGridSizer(3,3,10);
     buttonSizer->AddSpacer(parentUI->GetClientSize().GetWidth()*0.5);
     buttonSizer->Add(closeBtn,0, wxALL,10);
     buttonSizer->Add(sendBtn,0, wxALL,10);

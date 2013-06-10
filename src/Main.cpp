@@ -180,7 +180,6 @@ void MainFrame::OnSendBtnClk(wxCommandEvent& event)
         ptr->AppendChatText(text);
 		ptr->ui.AppendChatText(text);
         //将消息发送给对方
-
     }
 
 }

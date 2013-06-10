@@ -8,7 +8,6 @@
 #include <wx/listctrl.h>
 #include <wx/notebook.h>
 
-
 class ChatListItem;
 
 class ChatTabUI

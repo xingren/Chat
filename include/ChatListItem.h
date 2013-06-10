@@ -22,7 +22,6 @@ public:
     bool online;//是否在线
     int tabCount;//在noteBook的第几个tab
 
-
     ChatTabUI ui; //tabUI
     ChatPerson chatData;//聊天信息
 public:
