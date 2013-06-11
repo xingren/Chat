@@ -38,6 +38,7 @@ public://事件处理回调函数
     void OnItemSelect(wxListEvent& event);
     void OnSendBtnClk(wxCommandEvent& event);
     void OnCloseBtnClk(wxCommandEvent& event);
+    void OnCaptureImageBtnClk(wxCommandEvent& event);
     DECLARE_EVENT_TABLE()
 protected:
     wxListCtrl* m_item_list;
@@ -59,7 +60,8 @@ enum
     ID_About,
     ID_LISTCTRL,
     ID_NOTEBOOK,
-    ID_CANCLE
+    ID_CANCLE,
+    ID_CAPTURE_IMAGE
 };
 
 

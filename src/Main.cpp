@@ -1,6 +1,9 @@
 #include "../include/Main.h"
 
+#include <unistd.h>
+#include <sys/wait.h>
 
+pid_t wait(__WAIT_STATUS status);
 
 bool Main::OnInit()
 {
@@ -214,4 +217,58 @@ void MainFrame::OnCloseBtnClk(wxCommandEvent& event)
         tab_item_map.erase(iter);
     }
 
+}
+void MainFrame::OnCaptureImageBtnClk(wxCommandEvent& event)
+{
+    wxPanel* panel= (wxPanel*)noteBook->GetCurrentPage();
+    if(panel == NULL)
+        return;
+
+    std::map<wxPanel*,int>::iterator iter = tab_item_map.find(panel);
+    if(iter != tab_item_map.end())
+    {
+        wxListItem item;
+        item.SetId(iter->second);
+        item.SetMask(wxLIST_MASK_DATA);
+
+        wxString path="/home/rui/.Client/cap.png";
+
+        if(m_item_list->GetItem(item))
+        {
+            ChatListItem* ptr = (ChatListItem*) item.GetData();
+
+
+
+//#ifdef  __linux__
+            pid_t pid = fork();
+            if(pid < 0)
+            {
+                wxMessageBox("创建新进程失败");
+                return ;
+            }
+            if(pid == 0)
+            {
+               // char *str = path.c_str();
+               char str[1000];
+               strcpy(str,path.mb_str());
+                execlp("import","import",str,(char*)0);
+                exit(1);
+            }
+            int status;
+            if(wait(&status) == -1)
+            {
+                wxMessageBox("等待子进程结束时出错");
+                return ;
+            }
+            if(WIFEXITED(status))
+            {
+                ptr->ui.AppendImageToSendTextctrl(path);
+            }
+//#elif defined _WIN32
+
+
+
+//#endif
+        }
+    }
 }

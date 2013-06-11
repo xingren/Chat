@@ -7,7 +7,7 @@
 #include <wx/wx.h>
 #include <wx/listctrl.h>
 #include <wx/notebook.h>
-
+#include <wx/richtext/richtextctrl.h>
 class ChatListItem;
 
 class ChatTabUI
@@ -17,8 +17,8 @@ public:
     wxPanel* panel;
     wxBoxSizer* topSizer;
     wxBoxSizer* buttonSizer;
-    wxTextCtrl* textctrl;
-    wxTextCtrl* sendTextctrl;
+    wxRichTextCtrl* chatTextctrl;
+    wxRichTextCtrl* sendchatTextctrl;
     wxButton* closeBtn;
     wxButton* sendBtn;
 public:
@@ -26,6 +26,7 @@ public:
     void CreateTabUI(wxString&,wxObject* mainFrame);
     void AppendChatText(wxString&);
     wxString GetSendText();
+    void AppendImageToSendTextctrl(wxString& path);
 public:
 
 

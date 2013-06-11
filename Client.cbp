@@ -49,6 +49,7 @@
 		</Compiler>
 		<Linker>
 			<Add option="`wx-config --libs`" />
+			<Add option="-lwx_gtk2u_richtext-2.9" />
 		</Linker>
 		<Unit filename="include/ChatListItem.h" />
 		<Unit filename="include/ChatPerson.h" />

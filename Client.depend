@@ -3186,10 +3186,12 @@
 1369844058 e:\workspace\client\include\main.h
 	<wx/wx.h>
 
-1370850661 source:/media/E/workspace/Client/src/Main.cpp
+1370933710 source:/media/E/workspace/Client/src/Main.cpp
 	"../include/Main.h"
+	<unistd.h>
+	<sys/wait.h>
 
-1370856094 /media/E/workspace/Client/include/Main.h
+1370877966 /media/E/workspace/Client/include/Main.h
 	<wx/wx.h>
 	<wx/listctrl.h>
 	<wx/notebook.h>
@@ -6176,13 +6178,117 @@
 1370857428 source:/media/E/workspace/Client/src/ChatPerson.cpp
 	"../include/ChatPerson.h"
 
-1370870516 /media/E/workspace/Client/include/ChatTabUI.h
+1370884266 /media/E/workspace/Client/include/ChatTabUI.h
 	<wx/string.h>
 	<wx/wx.h>
 	<wx/listctrl.h>
 	<wx/notebook.h>
+	<wx/richtext/richtextctrl.h>
 
-1370857428 source:/media/E/workspace/Client/src/ChatTabUI.cpp
+1370920916 source:/media/E/workspace/Client/src/ChatTabUI.cpp
 	"../include/ChatTabUI.h"
 	"../include/Main.h"
+
+1370880887 /media/E/workspace/Client/capture.xpm
+
+1341743307 /media/D/Tools/wxWidgets-2.9.4/include/wx/richtext/richtextctrl.h
+	"wx/richtext/richtextbuffer.h"
+	"wx/scrolwin.h"
+	"wx/caret.h"
+	"wx/textctrl.h"
+	"wx/dnd.h"
+
+1341743307 /media/D/Tools/wxWidgets-2.9.4/include/wx/richtext/richtextbuffer.h
+	"wx/defs.h"
+	"wx/list.h"
+	"wx/textctrl.h"
+	"wx/bitmap.h"
+	"wx/image.h"
+	"wx/cmdproc.h"
+	"wx/txtstrm.h"
+	"wx/variant.h"
+	"wx/dataobj.h"
+
+1341743307 /media/D/Tools/wxWidgets-2.9.4/include/wx/cmdproc.h
+	"wx/defs.h"
+	"wx/object.h"
+	"wx/list.h"
+
+1341743307 /media/D/Tools/wxWidgets-2.9.4/include/wx/txtstrm.h
+	"wx/stream.h"
+	"wx/convauto.h"
+
+1341743307 /media/D/Tools/wxWidgets-2.9.4/include/wx/convauto.h
+	"wx/strconv.h"
+	"wx/fontenc.h"
+
+1341743307 /media/D/Tools/wxWidgets-2.9.4/include/wx/caret.h
+	"wx/defs.h"
+	"wx/gdicmn.h"
+	"wx/msw/caret.h"
+	"wx/generic/caret.h"
+
+1341743307 /media/D/Tools/wxWidgets-2.9.4/include/wx/msw/caret.h
+
+1341743307 /media/D/Tools/wxWidgets-2.9.4/include/wx/generic/caret.h
+	"wx/timer.h"
+	"wx/dc.h"
+	"wx/overlay.h"
+
+1341743307 /media/D/Tools/wxWidgets-2.9.4/include/wx/overlay.h
+	"wx/defs.h"
+
+1341743307 /media/D/Tools/wxWidgets-2.9.4/include/wx/dnd.h
+	"wx/defs.h"
+	"wx/dataobj.h"
+	"wx/cursor.h"
+	"wx/msw/ole/dropsrc.h"
+	"wx/msw/ole/droptgt.h"
+	"wx/motif/dnd.h"
+	"wx/x11/dnd.h"
+	"wx/gtk/dnd.h"
+	"wx/gtk1/dnd.h"
+	"wx/osx/dnd.h"
+	"wx/os2/dnd.h"
+
+1341743307 /media/D/Tools/wxWidgets-2.9.4/include/wx/msw/ole/dropsrc.h
+
+1341743307 /media/D/Tools/wxWidgets-2.9.4/include/wx/msw/ole/droptgt.h
+
+1341743307 /media/D/Tools/wxWidgets-2.9.4/include/wx/motif/dnd.h
+	"wx/defs.h"
+	"wx/object.h"
+	"wx/string.h"
+	"wx/dataobj.h"
+	"wx/cursor.h"
+
+1341743307 /media/D/Tools/wxWidgets-2.9.4/include/wx/x11/dnd.h
+	"wx/defs.h"
+	"wx/object.h"
+	"wx/string.h"
+	"wx/dataobj.h"
+	"wx/cursor.h"
+
+1341743307 /media/D/Tools/wxWidgets-2.9.4/include/wx/gtk/dnd.h
+	"wx/icon.h"
+
+1341743307 /media/D/Tools/wxWidgets-2.9.4/include/wx/gtk1/dnd.h
+	"wx/object.h"
+	"wx/string.h"
+	"wx/dataobj.h"
+	"wx/cursor.h"
+	"wx/icon.h"
+	"wx/gdicmn.h"
+
+1341743307 /media/D/Tools/wxWidgets-2.9.4/include/wx/osx/dnd.h
+	"wx/defs.h"
+	"wx/object.h"
+	"wx/string.h"
+	"wx/string.h"
+	"wx/dataobj.h"
+	"wx/cursor.h"
+
+1341743307 /media/D/Tools/wxWidgets-2.9.4/include/wx/os2/dnd.h
+	<os2.h>
+	<pmstddlg.h>
 
