@@ -1,4 +1,4 @@
-#include "../include/ChatListItem.h"
+#include "ChatListItem.h"
 
 
 long ChatListItem::ID = 8888;

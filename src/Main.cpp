@@ -1,4 +1,4 @@
-#include "../include/Main.h"
+#include "Main.h"
 
 #include <unistd.h>
 #include <sys/wait.h>
