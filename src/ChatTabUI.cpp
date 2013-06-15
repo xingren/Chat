@@ -1,5 +1,5 @@
-#include "../include/ChatTabUI.h"
-#include "../include/Main.h"
+#include "ChatTabUI.h"
+#include "Main.h"
 #include <wx/image.h>
 
 

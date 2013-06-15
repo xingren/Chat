@@ -1,4 +1,4 @@
-#include "../include/ChatPerson.h"
+#include "ChatPerson.h"
 
 ChatPerson::ChatPerson()
 {
