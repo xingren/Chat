@@ -1,15 +1,22 @@
-chat: Main.o ChatListItem.o ChatPerson.o ChatTabUI.o
-	g++ -o chat Main.o ChatListItem.o ChatPerson.o `wx-config --cxxflags` `wx-config --libs`
+CC = g++ 
+wxflags = `wx-config --cxxflags`
+wxlibs = `wx-config --libs`
 
-Main.o: ./src/Main.cpp ./include/Main.h
-	g++ -c src/Main.cpp `wx-config --cxxflags` `wx-config --libs`
-ChatPerson.o: ./src/ChatPerson.cpp ./include/ChatPerson.h
-	g++ -c src/ChatPerson.cpp `wx-config --cxxflags` `wx-config --libs`
-ChatListItem.o: ./src/ChatListItem.cpp ./include/ChatListItem.h
-	g++ -c src/ChatListItem.cpp `wx-config --cxxflags` `wx-config --libs`
+source_path = ./src
+sources := $(wildcard $(source_path)/*.cpp) 
+objects := $(sources: .cpp=.o) 
+executable := chat
 
-ChatTabUI.o: ./src/ChatTabUI.cpp ./include/ChatTabUI.h
-	g++ -c src/ChatTabUI.cpp `wx-config --cxxflags` `wx-config --libs`
+all:$(sources) $(executable)
 
-clean:
-	rm Main.o ChatListItem.o ChatPerson.o
+$(executable) : $(objects)
+		$(CC) $(wxflags) $^ -o $@ $(wxlibs)
+.cpp.o:
+		$(CC) $< -o $@ 
+% : %.cpp
+		$(CC) $(wxflags)  $^ -o $@ $(wxlibs) 
+.PHONY:clean
+clean: 
+		rm *.o $(executable)
+
+
