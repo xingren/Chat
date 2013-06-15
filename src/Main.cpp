@@ -1,9 +1,12 @@
 #include "Main.h"
 
+#ifdef __linux__
 #include <unistd.h>
 #include <sys/wait.h>
 
 pid_t wait(__WAIT_STATUS status);
+
+#endif 
 
 bool Main::OnInit()
 {
@@ -51,7 +54,7 @@ MainFrame::MainFrame(const wxString& title, const wxPoint& pos, const wxSize& si
     m_item_list = new wxListCtrl(mainPanel, ID_LISTCTRL, wxPoint(0,0), wxSize(100,window_size.GetHeight()), wxLC_LIST|wxLC_SINGLE_SEL);
 
     mainSizer->Add(m_item_list,0, wxEXPAND | wxALL, 10);
-    mainSizer->Add(noteBook,0,wxEXPAND | wxALL, 10);
+    mainSizer->Add(noteBook,1,wxEXPAND | wxALL, 10);
 
     mainPanel->SetSizer(mainSizer);
 
@@ -231,7 +234,7 @@ void MainFrame::OnCaptureImageBtnClk(wxCommandEvent& event)
         item.SetId(iter->second);
         item.SetMask(wxLIST_MASK_DATA);
 
-        wxString path="/home/rui/.Client/cap.png";
+        wxString path="~/.Client/cap.png";
 
         if(m_item_list->GetItem(item))
         {
@@ -239,7 +242,7 @@ void MainFrame::OnCaptureImageBtnClk(wxCommandEvent& event)
 
 
 
-//#ifdef  __linux__
+#ifdef  __linux__
             pid_t pid = fork();
             if(pid < 0)
             {
@@ -264,7 +267,8 @@ void MainFrame::OnCaptureImageBtnClk(wxCommandEvent& event)
             {
                 ptr->ui.AppendImageToSendTextctrl(path);
             }
-//#elif defined _WIN32
+#elif defined _WIN32
+#endif 
 
 
 

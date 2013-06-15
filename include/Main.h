@@ -10,7 +10,7 @@
 #include <map>
 
 
-#include "../include/ChatListItem.h"
+#include "ChatListItem.h"
 
 class ChatListItem;
 
