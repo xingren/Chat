@@ -17,8 +17,8 @@ public:
     wxPanel* panel;
     wxBoxSizer* topSizer;
     wxBoxSizer* buttonSizer;
-    wxRichTextCtrl* chatTextctrl;
-    wxRichTextCtrl* sendchatTextctrl;
+    wxRichTextCtrl* chatRTC;
+    wxRichTextCtrl* sendRTC;
     wxButton* closeBtn;
     wxButton* sendBtn;
 public:
