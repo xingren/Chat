@@ -7,7 +7,9 @@
 #include <wx/wx.h>
 #include <wx/listctrl.h>
 #include <wx/notebook.h>
-#include <wx/richtext/richtextctrl.h>
+#include "../include/myRTC.h"
+
+
 class ChatListItem;
 
 class ChatTabUI
@@ -17,8 +19,8 @@ public:
     wxPanel* panel;
     wxBoxSizer* topSizer;
     wxBoxSizer* buttonSizer;
-    wxRichTextCtrl* chatRTC;
-    wxRichTextCtrl* sendRTC;
+    myRTC* chatRTC;
+    myRTC* sendRTC;
     wxButton* closeBtn;
     wxButton* sendBtn;
 public:

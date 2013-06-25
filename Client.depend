@@ -3186,12 +3186,13 @@
 1369844058 e:\workspace\client\include\main.h
 	<wx/wx.h>
 
-1371266960 source:/media/E/workspace/Client/src/Main.cpp
+1371996240 source:/media/E/workspace/Client/src/Main.cpp
 	"../include/Main.h"
+	"../include/LoginDialog.h"
 	<unistd.h>
 	<sys/wait.h>
 
-1370877966 /media/E/workspace/Client/include/Main.h
+1371993002 /media/E/workspace/Client/include/Main.h
 	<wx/wx.h>
 	<wx/listctrl.h>
 	<wx/notebook.h>
@@ -6161,10 +6162,10 @@
 1370193193 /media/E/workspace/Client/include/ChatTabData.h
 	<wx/string.h>
 
-1371266084 source:/media/E/workspace/Client/src/ChatListItem.cpp
+1371992991 source:/media/E/workspace/Client/src/ChatListItem.cpp
 	"../include/ChatListItem.h"
 
-1370870518 /media/E/workspace/Client/include/ChatListItem.h
+1371993002 /media/E/workspace/Client/include/ChatListItem.h
 	<wx/string.h>
 	<wx/wx.h>
 	<wx/listctrl.h>
@@ -6172,23 +6173,24 @@
 	"../include/ChatPerson.h"
 	"../include/ChatTabUI.h"
 
-1370797936 /media/E/workspace/Client/include/ChatPerson.h
+1371993002 /media/E/workspace/Client/include/ChatPerson.h
 	<wx/string.h>
 
-1371266084 source:/media/E/workspace/Client/src/ChatPerson.cpp
+1371992991 source:/media/E/workspace/Client/src/ChatPerson.cpp
 	"../include/ChatPerson.h"
 
-1370884266 /media/E/workspace/Client/include/ChatTabUI.h
+1371993002 /media/E/workspace/Client/include/ChatTabUI.h
 	<wx/string.h>
 	<wx/wx.h>
 	<wx/listctrl.h>
 	<wx/notebook.h>
 	<wx/richtext/richtextctrl.h>
 
-1371266322 source:/media/E/workspace/Client/src/ChatTabUI.cpp
+1371993868 source:/media/E/workspace/Client/src/ChatTabUI.cpp
 	"../include/ChatTabUI.h"
 	"../include/Main.h"
 	<wx/image.h>
+	<wx/wfstream.h>
 
 1370880887 /media/E/workspace/Client/capture.xpm
 
@@ -6292,4 +6294,26 @@
 1341743307 /media/D/Tools/wxWidgets-2.9.4/include/wx/os2/dnd.h
 	<os2.h>
 	<pmstddlg.h>
+
+1341743307 /media/D/Tools/wxWidgets-2.9.4/include/wx/wfstream.h
+	"wx/defs.h"
+	"wx/object.h"
+	"wx/string.h"
+	"wx/stream.h"
+	"wx/file.h"
+	"wx/ffile.h"
+
+1341743307 /media/D/Tools/wxWidgets-2.9.4/include/wx/ffile.h
+	"wx/defs.h"
+	"wx/string.h"
+	"wx/filefn.h"
+	"wx/convauto.h"
+	<stdio.h>
+
+1371995763 /media/E/workspace/Client/include/LoginDialog.h
+	<wx/dialog.h>
+
+1371995790 source:/media/E/workspace/Client/src/LoginDialog.cpp
+	"../include/LoginDialog.h"
+	<wx/wx.h>
 
