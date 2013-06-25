@@ -20,7 +20,7 @@ void LoginDialog::CreateControlers()
 	wxTextCtrl* emailText = new wxTextCtrl(this,ID_EMAIL);
 	wxTextCtrl* passwordText = new wxTextCtrl(this,ID_PASSWORD,wxEmptyString,wxDefaultPosition,wxDefaultSize,wxTE_PASSWORD);
 	wxBoxSizer* buttonSizer = new wxBoxSizer(wxHORIZONTAL);
-	
+
 	topSizer->Add(emailText,0,wxFIXED,5);
 	topSizer->Add(passwordText,0,wxFIXED,5);
 	topSizer->Add(buttonSizer,wxFIXED);
@@ -35,4 +35,5 @@ void LoginDialog::OnLoginBtnClk(wxCommandEvent& event)
 {
 	//do login
 	EndModal(wxID_OK);
+
 }

@@ -9,7 +9,6 @@
 #include <wx/notebook.h>
 #include "../include/myRTC.h"
 
-
 class ChatListItem;
 
 class ChatTabUI

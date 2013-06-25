@@ -3186,7 +3186,7 @@
 1369844058 e:\workspace\client\include\main.h
 	<wx/wx.h>
 
-1371996240 source:/media/E/workspace/Client/src/Main.cpp
+1372141793 source:/media/E/workspace/Client/src/Main.cpp
 	"../include/Main.h"
 	"../include/LoginDialog.h"
 	<unistd.h>
@@ -6162,7 +6162,7 @@
 1370193193 /media/E/workspace/Client/include/ChatTabData.h
 	<wx/string.h>
 
-1371992991 source:/media/E/workspace/Client/src/ChatListItem.cpp
+1372141624 source:/media/E/workspace/Client/src/ChatListItem.cpp
 	"../include/ChatListItem.h"
 
 1371993002 /media/E/workspace/Client/include/ChatListItem.h
@@ -6176,17 +6176,18 @@
 1371993002 /media/E/workspace/Client/include/ChatPerson.h
 	<wx/string.h>
 
-1371992991 source:/media/E/workspace/Client/src/ChatPerson.cpp
+1372141624 source:/media/E/workspace/Client/src/ChatPerson.cpp
 	"../include/ChatPerson.h"
 
-1371993002 /media/E/workspace/Client/include/ChatTabUI.h
+1372144706 /media/E/workspace/Client/include/ChatTabUI.h
 	<wx/string.h>
 	<wx/wx.h>
 	<wx/listctrl.h>
 	<wx/notebook.h>
-	<wx/richtext/richtextctrl.h>
+	"../include/myRTC.h"
+	"sort.h"
 
-1371993868 source:/media/E/workspace/Client/src/ChatTabUI.cpp
+1372141624 source:/media/E/workspace/Client/src/ChatTabUI.cpp
 	"../include/ChatTabUI.h"
 	"../include/Main.h"
 	<wx/image.h>
@@ -6310,10 +6311,16 @@
 	"wx/convauto.h"
 	<stdio.h>
 
-1371995763 /media/E/workspace/Client/include/LoginDialog.h
+1372080310 /media/E/workspace/Client/include/LoginDialog.h
 	<wx/dialog.h>
 
-1371995790 source:/media/E/workspace/Client/src/LoginDialog.cpp
+1372141624 source:/media/E/workspace/Client/src/LoginDialog.cpp
 	"../include/LoginDialog.h"
 	<wx/wx.h>
+
+1372081024 /media/E/workspace/Client/include/myRTC.h
+	<wx/richtext/richtextctrl.h>
+
+1372141984 source:/media/E/workspace/Client/src/myRTC.cpp
+	"../include/myRTC.h"
 

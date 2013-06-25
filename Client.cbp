@@ -56,11 +56,13 @@
 		<Unit filename="include/ChatTabUI.h" />
 		<Unit filename="include/LoginDialog.h" />
 		<Unit filename="include/Main.h" />
+		<Unit filename="include/myRTC.h" />
 		<Unit filename="src/ChatListItem.cpp" />
 		<Unit filename="src/ChatPerson.cpp" />
 		<Unit filename="src/ChatTabUI.cpp" />
 		<Unit filename="src/LoginDialog.cpp" />
 		<Unit filename="src/Main.cpp" />
+		<Unit filename="src/myRTC.cpp" />
 		<Extensions>
 			<code_completion>
 				<search_path add="include" />
